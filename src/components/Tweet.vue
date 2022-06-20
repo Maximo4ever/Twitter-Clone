@@ -5,7 +5,8 @@ import LikeIcon from "../assets/LikeIcon.vue";
 import ShareIcon from "../assets/ShareIcon.vue";
 import Options from "../assets/Options.vue";
 defineProps({
-  index: Number
+  index: Number,
+  tweet: Object
 })
 </script>
 <template>
@@ -14,11 +15,18 @@ defineProps({
     <div class="tweet__body">
       <header class="tweet__body__header">
         <div class="tweet__body__header__content">
-          <h6 class="tweet__body__name">John Doe</h6><span>@elonmusk</span> <span>· 13h</span>
+          <h6 class="tweet__body__name">John Doe</h6><span>@CathyVipi</span> <span>· 13h</span>
         </div>
         <Options />
       </header>
       <p class="tweet__body__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, libero! Velit ipsa eos distinctio vitae. Nam autem tenetur ab, in adipisci atque amet architecto facilis exercitationem, reiciendis libero a sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel?</p>
+      <div v-if="tweet.type === 'image'">
+        <img class="tweet__body__img" :src="tweet.src" alt="random image">
+      </div>
+      <div v-else-if="tweet.type === 'groupImages'" class="tweet__body__imgsContent">
+        <img v-for="src in tweet.src" class="tweet__body__imgs" :src="src" alt="random image">
+      </div>
+
       <div class="tweet__body__social">
         <div style="--hBg:#1C3345;--hColor:#1D9BF0;">
           <span class="tweet__body__social__icon">
@@ -90,6 +98,30 @@ defineProps({
   font-size: 15px;
   line-height: 20px;
   font-weight: 400;
+}
+.tweet__body__img--focus {
+  width: auto;
+  height: 90vh;
+  position: absolute;
+  inset: 0;
+  margin: 0 auto;
+  border-radius: 0;
+  z-index: 99;
+}
+.tweet__body__img {
+  width: 100%;
+  padding-top: 15px;
+  border-radius: 25px;
+}
+.tweet__body__imgsContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 15px;
+  border-radius: 25px;
+  overflow: hidden;
+}
+.tweet__body__imgs {
+  width: 100%;
 }
 .tweet__body__social {
   width: 100%;
