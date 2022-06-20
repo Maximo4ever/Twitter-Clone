@@ -1,6 +1,7 @@
 <script setup>
 import SearchIcon from "../assets/SearchIcon.vue";
 import AsideUser from "./AsideUser.vue";
+const usersToFollow = Array.from({length:4})
 </script>
 <template>
   <aside class="aside">
@@ -14,12 +15,8 @@ import AsideUser from "./AsideUser.vue";
       </section>
       <section class="section">
         <h3>Who to follow</h3>
-        <div class="userWhoToFollow">
-          <AsideUser />
-          <AsideUser />
-          <AsideUser />
-          <AsideUser />
-          <AsideUser />
+        <div class="userWhoToFollow" v-for="(n,index) in usersToFollow">
+          <AsideUser :index="index" />
         </div>
       </section>
     </div>

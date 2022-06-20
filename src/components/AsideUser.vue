@@ -1,6 +1,11 @@
+<script setup>
+defineProps({
+  index: Number
+})
+</script>
 <template>
   <div class="user">
-    <img class="user__img" src="https://thispersondoesnotexist.com/image" alt="random">
+    <img class="user__img" :src="`https://randomuser.me/api/portraits/lego/${index}.jpg`" alt="random">
     <div>
       <div>
         <h6 class="user__name">Jhon Doe</h6>
