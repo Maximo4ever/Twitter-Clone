@@ -2,18 +2,16 @@
 import Nav from "./Nav.vue";
 import WhatsHappening from "./WhatsHappening.vue";
 import Tweet from "./Tweet.vue";
+
+const people = Array.from({length:20})
 </script>
 <template>
   <main class="main">
     <Nav />
     <WhatsHappening />
-    <Tweet />
-    <Tweet />
-    <Tweet />
-    <Tweet />
-    <Tweet />
-    <Tweet />
-    <Tweet />
+    <div v-for="(n,index) in people">
+      <Tweet :index="index" />
+    </div>
   </main>
 </template>
 <style>
