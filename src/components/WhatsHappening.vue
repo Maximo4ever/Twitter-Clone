@@ -33,6 +33,9 @@
   outline: none;
   padding-block: 12px;
 }
+.whatsHappening__input::placeholder {
+  color: #8B98A5;
+}
 .whatsHappening div {
   width: 100%;
 }
